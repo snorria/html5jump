@@ -1,7 +1,7 @@
 @import "compass/css3";
 /*
 .container {
-  bottom: 0;
+  top: 0;
   left: 10px;
   min-height: 600px;
   overflow: hidden;
@@ -19,16 +19,18 @@
   height: 500px;
   margin-left: -250px;
   margin-top: -250px;
+  background:black;
 }
 .background {
   height:5000px;
   width: 500px;
   position: absolute;
-  background: -webkit-linear-gradient(top, black, red);
+  bottom:0px;
+  background: -webkit-linear-gradient(top, black, darkblue);
 }
 
 .view {
-
+height:500px;
   }
 .player {
   position: absolute;
@@ -52,7 +54,7 @@
   background: url('/images/Blanka-rolling.gif') no-repeat;
   }
   .blankaWalk {
-  -webkit-animation: walk 2s infinite;
+  -webkit-animation: walk 1s infinite;
   width:105px;
   }
   .blankaLeft {

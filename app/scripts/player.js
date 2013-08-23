@@ -2,7 +2,7 @@
 
 define(['controls'], function(controls) {
 
-  var PLAYER_SPEED = 100;
+  var PLAYER_SPEED = 800;
   var JUMP_VELOCITY = 800;
   var GRAVITY = 2000;
 
@@ -19,18 +19,16 @@ define(['controls'], function(controls) {
     // Player input
     if (controls.keys.right) {
       this.vel.x = PLAYER_SPEED;
-      if(!this.turnedRight){
+      if(this.el.blanka.hasClass('blankaLeft')){
         this.el.blanka.toggleClass('blankaLeft');
-        this.turnedRight = true;
       }
       if(!this.el.blanka.hasClass('blankaWalk') && !this.el.blanka.hasClass('blankaJump')){
         this.el.blanka.toggleClass('blankaWalk');
       }
     } else if (controls.keys.left) {
       this.vel.x = -PLAYER_SPEED;
-      if(this.turnedRight){
+      if(!this.el.blanka.hasClass('blankaLeft')){
         this.el.blanka.toggleClass('blankaLeft');
-        this.turnedRight = false;
       }
       if(!this.el.blanka.hasClass('blankaWalk') && !this.el.blanka.hasClass('blankaJump')){
         this.el.blanka.toggleClass('blankaWalk');

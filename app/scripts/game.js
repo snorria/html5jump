@@ -12,6 +12,7 @@ define(['player'], function(Player) {
     this.el = el;
     this.player = new Player(this.el.find('.player'));
     this.viewEl = el.find('.view');
+    this.i = 1;
     console.log(this.viewEl);
 
     // Cache a bound onFrame since we need it each frame.
@@ -33,7 +34,8 @@ define(['player'], function(Player) {
   };
 
   Game.prototype.updateView = function() {
-    //this.viewEl.css('transform', 'translate3d(0px,-1000px,0)');
+    //this.viewEl.css('transform', 'translate3d(0px,'+this.i+'px,0)');
+    //this.i++;
     
   }
 
