@@ -33,7 +33,7 @@ define(['player'], function(Player) {
   };
 
   Game.prototype.updateView = function() {
-    this.viewEl.css("-webkit-transform", 'translate(0,0px)');
+    //this.viewEl.css('transform', 'translate3d(0px,-1000px,0)');
     
   }
 

@@ -2,13 +2,15 @@
 
 define(['controls'], function(controls) {
 
-  var PLAYER_SPEED = 2000;
+  var PLAYER_SPEED = 100;
   var JUMP_VELOCITY = 800;
   var GRAVITY = 2000;
 
   var Player = function(el) {
     this.el = el;
+    this.el.blanka = this.el.find('.blanka');
     this.jumping = false;
+    this.turnedRight = true;
     this.pos = { x: 0, y: 0 };
     this.vel = { x: 0, y: 0 };
   };
@@ -17,10 +19,28 @@ define(['controls'], function(controls) {
     // Player input
     if (controls.keys.right) {
       this.vel.x = PLAYER_SPEED;
+      if(!this.turnedRight){
+        this.el.blanka.toggleClass('blankaLeft');
+        this.turnedRight = true;
+      }
+      if(!this.el.blanka.hasClass('blankaWalk') && !this.el.blanka.hasClass('blankaJump')){
+        this.el.blanka.toggleClass('blankaWalk');
+      }
     } else if (controls.keys.left) {
       this.vel.x = -PLAYER_SPEED;
+      if(this.turnedRight){
+        this.el.blanka.toggleClass('blankaLeft');
+        this.turnedRight = false;
+      }
+      if(!this.el.blanka.hasClass('blankaWalk') && !this.el.blanka.hasClass('blankaJump')){
+        this.el.blanka.toggleClass('blankaWalk');
+      }
     } else {
       this.vel.x = 0;
+      if(this.el.blanka.hasClass('blankaWalk'))
+      {
+        this.el.blanka.toggleClass('blankaWalk');
+      }
     }
 
 
@@ -33,6 +53,9 @@ define(['controls'], function(controls) {
     if (controls.keys.space && !this.jumping) {
       this.vel.y = -JUMP_VELOCITY;
       this.jumping = true;
+      this.el.blanka.toggleClass('blankaJump');
+      if(this.el.blanka.hasClass('blankaWalk'))
+        this.el.blanka.toggleClass('blankaWalk');
     }
 
     // Gravity
@@ -45,7 +68,11 @@ define(['controls'], function(controls) {
     if (this.pos.y > 0) {
       this.pos.y = 0;
       this.vel.y = 0;
-      this.jumping = false;
+      if(this.jumping == true)
+      {
+        this.jumping = false;
+        this.el.blanka.toggleClass('blankaJump');
+      }
     }
 
     // Update UI
