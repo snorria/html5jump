@@ -1,5 +1,5 @@
 @import "compass/css3";
-
+/*
 .container {
   bottom: 0;
   left: 10px;
@@ -8,19 +8,38 @@
   position: absolute;
   right: 0;
   top: 10px;
+
+}*/
+.container {
+  left: 50%;
+  top: 50%;
+  overflow: hidden;
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  margin-left: -250px;
+  margin-top: -250px;
+}
+.background {
+  height:5000px;
+  width: 500px;
+  position: absolute;
+  background: -webkit-linear-gradient(top, black, red);
 }
 
+.view {
+}
 .player {
   position: absolute;
-  left: 100px;
-  top: 200px;
+  left: 150px;
+  bottom: 50px;
   width: 68px;
   height: 81px;
   margin-left: -34px;
   margin-top: -81px;
 
   div {margin: 0; padding: 0;}
-  div div {background: #A4CA39; position: relative;}
+  div div {background: green; position: relative;}
 
   .android {
     height: 402px; width: 278px;

@@ -19,7 +19,8 @@ define([], function() {
 
     $(window)
       .on('keydown', this.onKeyDown.bind(this))
-      .on('keyup', this.onKeyUp.bind(this));
+      .on('keyup', this.onKeyUp.bind(this))
+      .on('mousemove', this.onMouseMove.bind(this));
   };
 
   Controls.prototype.onKeyDown = function(e) {
@@ -35,6 +36,10 @@ define([], function() {
       var keyName = KEYS[e.keyCode];
       this.keys[keyName] = false;
     }
+  };
+
+  Controls.prototype.onMouseMove = function(e) {
+    this.keys['mouse'] = e.pageX;
   };
   
   // Export singleton.

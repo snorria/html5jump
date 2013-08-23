@@ -6,9 +6,13 @@ define(['player'], function(Player) {
    * @param {Element} el DOM element containig the game.
    * @constructor
    */
+
+  //wtf is this?
   var Game = function(el) {
     this.el = el;
     this.player = new Player(this.el.find('.player'));
+    this.viewEl = el.find('.view');
+    console.log(this.viewEl);
 
     // Cache a bound onFrame since we need it each frame.
     this.onFrame = this.onFrame.bind(this);
@@ -23,10 +27,15 @@ define(['player'], function(Player) {
     this.lastFrame = now;
 
     this.player.onFrame(delta);
-
+    this.updateView();
     // Request next frame.
     requestAnimFrame(this.onFrame);
   };
+
+  Game.prototype.updateView = function() {
+    this.viewEl.css("-webkit-transform", 'translate(0,0px)');
+    
+  }
 
   /**
    * Starts the game.

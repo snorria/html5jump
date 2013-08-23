@@ -2,9 +2,9 @@
 
 define(['controls'], function(controls) {
 
-  var PLAYER_SPEED = 200;
+  var PLAYER_SPEED = 2000;
   var JUMP_VELOCITY = 800;
-  var GRAVITY = 4000;
+  var GRAVITY = 2000;
 
   var Player = function(el) {
     this.el = el;
@@ -22,6 +22,12 @@ define(['controls'], function(controls) {
     } else {
       this.vel.x = 0;
     }
+
+
+    //mouse
+    /*if(controls.keys.mouse != this.pos.x){
+      this.pos.x = controls.keys.mouse-860;
+    }*/
 
     // Jumping
     if (controls.keys.space && !this.jumping) {
