@@ -12,6 +12,7 @@ define(['player'], function(Player) {
     this.el = el;
     this.player = new Player(this.el.find('.player'));
     this.viewEl = el.find('.view');
+    this.viewPortY = 0;
     this.i = 1;
     console.log(this.viewEl);
 
@@ -36,6 +37,11 @@ define(['player'], function(Player) {
   Game.prototype.updateView = function() {
     //this.viewEl.css('transform', 'translate3d(0px,'+this.i+'px,0)');
     //this.i++;
+    var diff = this.viewPortY + this.player.pos.y;
+    if(diff < -100){
+      this.viewEl.css('transform', 'translate3d(0px,'+(-diff)+'px,0)');
+      this.viewportY = this.viewPortY+(-diff);
+    }
     
   }
 

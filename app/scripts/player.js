@@ -50,7 +50,7 @@ define(['controls'], function(controls) {
     // Jumping
     if (controls.keys.space && !this.jumping) {
       this.vel.y = -JUMP_VELOCITY;
-      this.jumping = true;
+      this.jumping = false;
       this.el.blanka.toggleClass('blankaJump');
       if(this.el.blanka.hasClass('blankaWalk'))
         this.el.blanka.toggleClass('blankaWalk');
